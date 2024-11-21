@@ -6,13 +6,12 @@ from PyQt5.QtWidgets import (
     QPushButton, QFileDialog, QLabel, QComboBox, QLineEdit, QMessageBox, QProgressBar
 )
 from PyQt5.QtCore import QProcess
-from plyer import notification  # 导入通知模块
+from plyer import notification
 
-    
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("PDF翻译程序")
+        self.setWindowTitle("PDF2ZH GUI")
         self.resize(600, 400)
         
         # 创建中心部件和布局
@@ -225,7 +224,7 @@ class MainWindow(QMainWindow):
             
             # 设置默认模型提示
             if self.selected_service == "OpenAI":
-                self.model_input.setPlaceholderText("例如: gpt-3.5-turbo, gpt-4")
+                self.model_input.setPlaceholderText("例如: gpt-4o-mini")
             else:
                 self.model_input.setPlaceholderText("例如: gemma2") 
         else:
@@ -285,7 +284,6 @@ class MainWindow(QMainWindow):
             if self.tgt_lang_input.text():
                 command.extend(["--lang-out", self.tgt_lang_input.text()])
             
-            # 设置工作目录为输出目录，这样pdf2zh会自动在当前目录生成翻译文件
             self.process.setWorkingDirectory(self.save_path)
 
             print(f"执行命令: {' '.join(command)}")  # 调试用
