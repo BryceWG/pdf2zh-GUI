@@ -1,0 +1,7 @@
+{
+  "service": "OpenAI",
+  "model": "deepseek-chat",
+  "thread": "50",
+  "src_lang": "",
+  "tgt_lang": ""
+}
